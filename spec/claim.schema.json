@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://industry-research.local/spec/claim.schema.json",
+  "title": "Claim",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["claim_id", "statement", "status", "importance", "supporting_evidence_ids", "contradicting_evidence_ids"],
+  "properties": {
+    "claim_id": {"type": "string", "minLength": 1},
+    "statement": {"type": "string", "minLength": 1},
+    "claim_type": {"type": ["string", "null"]},
+    "subject_entity_ids": {
+      "type": "array",
+      "items": {"type": "string"},
+      "uniqueItems": true
+    },
+    "geography": {"type": ["string", "null"]},
+    "period_start": {"type": ["string", "null"], "format": "date"},
+    "period_end": {"type": ["string", "null"], "format": "date"},
+    "status": {
+      "type": "string",
+      "enum": ["verified", "probable", "single_source", "conflicted", "unverified", "rejected"]
+    },
+    "importance": {"type": "number", "minimum": 0, "maximum": 1},
+    "uncertainty": {"type": "number", "minimum": 0, "maximum": 1},
+    "supporting_evidence_ids": {
+      "type": "array",
+      "items": {"type": "string"},
+      "uniqueItems": true
+    },
+    "contradicting_evidence_ids": {
+      "type": "array",
+      "items": {"type": "string"},
+      "uniqueItems": true
+    },
+    "verification_notes": {"type": ["string", "null"]}
+  }
+}
