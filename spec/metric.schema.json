@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://industry-research.local/spec/metric.schema.json",
+  "title": "MetricObservation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["metric_id", "metric_name", "definition", "value", "unit", "geography", "observation_type", "evidence_id", "source_family_id"],
+  "properties": {
+    "metric_id": {"type": "string", "minLength": 1},
+    "metric_name": {"type": "string", "minLength": 1},
+    "definition": {"type": "string", "minLength": 1},
+    "value": {"type": "number"},
+    "unit": {"type": "string", "minLength": 1},
+    "currency": {"type": ["string", "null"]},
+    "price_basis": {
+      "type": "string",
+      "enum": ["nominal", "real", "not_applicable", "unknown"]
+    },
+    "geography": {"type": "string", "minLength": 1},
+    "period_start": {"type": ["string", "null"], "format": "date"},
+    "period_end": {"type": ["string", "null"], "format": "date"},
+    "observation_type": {
+      "type": "string",
+      "enum": ["historical", "estimate", "forecast"]
+    },
+    "base_year": {"type": ["integer", "null"]},
+    "forecast_horizon": {"type": ["integer", "null"]},
+    "segment_scope": {"type": ["string", "null"]},
+    "value_chain_level": {"type": ["string", "null"]},
+    "methodology": {"type": ["string", "null"]},
+    "evidence_id": {"type": "string", "minLength": 1},
+    "source_family_id": {"type": "string", "minLength": 1}
+  }
+}
