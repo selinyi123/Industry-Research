@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://industry-research.local/spec/source.schema.json",
+  "title": "Source",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["source_id", "name", "authority_class", "source_family_id"],
+  "properties": {
+    "source_id": {"type": "string", "minLength": 1},
+    "name": {"type": "string", "minLength": 1},
+    "canonical_url": {"type": ["string", "null"], "format": "uri"},
+    "authority_class": {
+      "type": "string",
+      "enum": ["S", "A", "B", "C", "D", "E", "Lead"]
+    },
+    "source_family_id": {"type": "string", "minLength": 1},
+    "primaryness": {
+      "type": "string",
+      "enum": ["primary", "secondary", "tertiary", "mixed", "unknown"]
+    },
+    "methodology_transparency": {
+      "type": "string",
+      "enum": ["high", "medium", "low", "none", "unknown"]
+    },
+    "jurisdiction": {"type": ["string", "null"]},
+    "language": {"type": ["string", "null"]},
+    "notes": {"type": ["string", "null"]}
+  }
+}
